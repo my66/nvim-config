@@ -27,3 +27,4 @@ require("lazy").setup(plugin_specs, {
 
 -- diagnostics.lua 只是配置，不作为插件加载，单独 require
 require("plugins.lsp.diagnostics")
+
