@@ -1,0 +1,20 @@
+-- 先保存原始配置
+local orig = { virtual_lines = false, virtual_text = true }
+
+-- 初始配置
+vim.diagnostic.config(orig)
+
+-- 光标移动或诊断改变时，仅在当前行打开虚拟行
+vim.api.nvim_create_autocmd({ "CursorMoved", "DiagnosticChanged" }, {
+  callback = function()
+    local has_err = vim.diagnostic.get(0, { lnum = vim.fn.line('.') - 1 })[1]
+    if has_err then
+      vim.diagnostic.config({
+        virtual_lines = { current_line = true },
+        virtual_text  = false,
+      })
+    else
+      vim.diagnostic.config(orig)
+    end
+  end,
+})
