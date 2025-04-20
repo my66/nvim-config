@@ -14,5 +14,8 @@ return {
   { import = "plugins.treesitter" },
   { import = "plugins.commentary" },
   { import = "plugins.toggleterm" },
+  { import = "plugins.ui_enhancements" },
+  { import = "plugins.autotag" },
+
 
 }

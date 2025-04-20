@@ -1,5 +1,4 @@
-return
-  {
+return {
   "akinsho/toggleterm.nvim",
   version = "*", -- 或者指定一个版本，例如 "v2.9.0"
   -- lazy = false, -- 如果你希望启动时就加载可以取消注释，但通常按需加载更好
@@ -87,5 +86,3 @@ return
     -- require("toggleterm").toggle(0) -- 0 表示终端 ID，toggle(0) 会创建或切换 ID 为 0 的终端
   end
 }
-
-

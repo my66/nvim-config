@@ -11,7 +11,6 @@ return {
       -- 补全菜单行为：弹出但不自动插入或选中
       vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
       -- 半透明弹出框，数值越大越透明
-      vim.opt.pumblend = 10
 
       local cmp = require("cmp")
       local luasnip = require("luasnip")

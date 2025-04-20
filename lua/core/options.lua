@@ -25,7 +25,6 @@ opt.cursorline = true        -- 高亮显示当前行
 -- 外观和主题
 
 opt.termguicolors = true     -- 启用 24 位真彩色支持
-opt.background     = "dark"  -- 主题使用深色模式（或 "light" 视终端风格而定）
 opt.signcolumn     = "yes"   -- 总是显示符号列，避免文本抖动
 
 -- 退格行为

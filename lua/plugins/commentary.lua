@@ -1,5 +1,4 @@
-return
-{
+return {
   "tpope/vim-commentary",
   -- 这个插件通常不需要任何配置
   -- 你可以按需加载，或者如果你希望它总是可用，可以设置 lazy = false

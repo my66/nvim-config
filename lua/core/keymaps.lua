@@ -1,5 +1,5 @@
 -- 设置 Leader 键 (必须在映射之前设置)
-vim.g.mapleader = "," -- 将 Leader 键设置为空格
+vim.g.mapleader = "," -- 将 Leader 键设置为逗号
 vim.g.maplocalleader = " " -- 将 Local Leader 也设置为空格
 
 local map = vim.keymap.set
@@ -23,15 +23,14 @@ map("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "切换到下一个标签页" }
 map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "切换到上一个标签页" })
 map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "在一个新的标签页中打开当前正在编辑的文件" })
  
-map('n', '<leader>pv', '<cmd>Ex<cr>', { desc = "打开 Netrw 文件浏览器" })
 map('n', '<C-h>', '<C-w>h', { desc = "切换到左侧窗口" })
 map('n', '<C-l>', '<C-w>l', { desc = "切换到右侧窗口" })
 map('n', '<C-j>', '<C-w>j', { desc = "切换到下方窗口" })
 map('n', '<C-k>', '<C-w>k', { desc = "切换到上方窗口" })
 
 --打开终端
-map("n", "<leader>tt", "<cmd>split term://bash<CR>", { desc = "在下方打开终端" })
-map("n", "<leader>tv", "<cmd>vsplit term://bash<CR>", { desc = "在右方打开终端" })
+--map("n", "<leader>tt", "<cmd>split term://bash<CR>", { desc = "在下方打开终端" })
+--map("n", "<leader>tv", "<cmd>vsplit term://bash<CR>", { desc = "在右方打开终端" })
 
 
 -- **诊断跳转**（E 错误标记）

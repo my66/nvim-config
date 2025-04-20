@@ -1,23 +1,31 @@
 return {
-  -- 其他插件…
   {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",       -- 安装或更新时自动下载解析器
+    build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup {
-        highlight = { enable = true },   -- 启用高亮
-        indent    = { enable = true },   -- 启用基于语法的缩进
-        incremental_selection = {        -- 增量选中
+        ensure_installed = {
+          "lua",
+          "python",
+          "javascript",
+          "typescript",
+          "html", -- 确保 HTML 解析器被安装
+          "css",
+          "c",
+          "cpp",
+          "rust",
+          "bash",
+          -- 根据你的常用语言添加更多...
+        },
+        highlight = { enable = true },
+        indent    = { enable = true },
+        incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "gnn",       -- 开始选中
-            node_incremental = "grn",     -- 扩大选区
-            node_decremental = "grm",     -- 缩小选区
+            init_selection = "gnn",
+            node_incremental = "grn",
+            node_decremental = "grm",
           },
-        },
-        playground = {                   -- 如果安装了 playground
-          enable = true,
-          updatetime = 25,               -- 更新延迟
         },
       }
     end,
@@ -25,3 +33,4 @@ return {
   -- 如果想用可视化面板，继续加：
   { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
 }
+
