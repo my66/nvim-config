@@ -31,6 +31,10 @@ opt.signcolumn     = "yes"   -- 总是显示符号列，避免文本抖动
 opt.backspace = "indent,eol,start" -- 退格可跨缩进、行尾和插入点
 
 -- 系统剪贴板
+-- sudo apt update
+--sudo apt install xclip        # 安装 xclip
+--或者安装 xsel：
+--sudo apt install xsel
 opt.clipboard:append("unnamedplus") -- 默认使用系统剪贴板
 
 -- 窗口分割

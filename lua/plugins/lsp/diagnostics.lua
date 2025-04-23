@@ -32,12 +32,10 @@ vim.diagnostic.config({
 -- 使用 <Leader>d (通常是 \d 或 空格d) 打开当前行的浮动诊断窗口
 vim.keymap.set("n", "<Leader>d", function()
   vim.diagnostic.open_float(nil, { scope = "line" }) -- 'line' 范围仅显示当前行 [4, 1, 10, 3]
-end, { desc = "显示当前行诊断 (Show line diagnostics)" })
-
--- 使用 <Leader>D 打开整个缓冲区的浮动诊断窗口
+end, { desc = "显示当前行诊断" })
 vim.keymap.set("n", "<Leader>D", function()
   vim.diagnostic.open_float(nil, { scope = "buffer" }) -- 'buffer' 范围显示整个文件 [4, 10]
-end, { desc = "显示缓冲区诊断 (Show buffer diagnostics)" })
+end, { desc = "显示缓冲区诊断" })
 
 -- Neovim LSP 默认会映射 ]d 和 [d 用于跳转，如果需要可以取消注释或自定义
 -- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "跳转到下一个诊断 (Go to next diagnostic)" })

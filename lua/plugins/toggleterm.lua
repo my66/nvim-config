@@ -70,19 +70,13 @@ return {
       -- 使用 jj 退出 Terminal 模式回到 Normal 模式 (个人习惯，可选)
       map('t', 'jj', '<C-\\><C-n>', term_opts)
       map('t', '<esc>', '<C-\\><C-n>', term_opts)
-      -- 你也可以映射其他键，比如用 <esc> 退出 Terminal 模式
-      -- map('t', '<esc>', '<C-\\><C-n>', term_opts)
-
       -- 在 Terminal 模式下，使用 <leader>t 也可以切换 (关闭) 终端
       -- 注意：这需要你的 <leader> 键不是终端本身会用到的字符
-      map('t', '<leader>t', '<cmd>ToggleTerm<CR>', { desc = "切换终端", silent = true })
       -- 如果你的 leader 是逗号 ',', 这个映射通常是安全的
+      map('t', '<leader>t', '<cmd>ToggleTerm<CR>', { desc = "切换终端", silent = true })
     end
 
     -- 使用 Vim 的自动命令，在进入 Terminal 模式时调用我们的函数来设置内部快捷键
     vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
-
-    -- (可选) 如果你想在启动时就创建一个终端但不立即显示，可以取消下面的注释
-    -- require("toggleterm").toggle(0) -- 0 表示终端 ID，toggle(0) 会创建或切换 ID 为 0 的终端
   end
 }
