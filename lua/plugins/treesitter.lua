@@ -15,6 +15,7 @@ return {
           "cpp",
           "rust",
           "bash",
+          "go",
           -- 根据你的常用语言添加更多...
         },
         highlight = { enable = true },

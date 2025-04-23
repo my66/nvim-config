@@ -22,6 +22,7 @@ return {
           "ts_ls",         -- TypeScript/JavaScript
           "lua_ls",        -- Lua
           "rust_analyzer", -- Rust
+          "gopls",
         },
       })
     end,

@@ -40,6 +40,7 @@ return {
         "ts_ls",         -- TypeScript/JavaScript
         "lua_ls",        -- Lua
         "rust_analyzer", -- Rust
+        "gopls",
       }
       -- 循环设置以上所有服务器
       for _, name in ipairs(servers) do
