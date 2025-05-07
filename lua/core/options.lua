@@ -3,6 +3,7 @@ local opt = vim.opt -- 简写，方便设定选项
 -- 行号
 opt.relativenumber = true    -- 显示相对行号
 opt.number = true            -- 光标所在行显示绝对行号
+opt.colorcolumn = "80"
 
 -- 制表符和缩进
 opt.tabstop = 2              -- 一个 Tab 等于 2 个空格宽度
@@ -11,7 +12,8 @@ opt.expandtab = true         -- 将 Tab 键转换为空格
 opt.autoindent = true        -- 新行继承上一行缩进
 
 -- 行包装
-opt.wrap = false             -- 禁用自动换行
+--opt.wrap = false             -- 禁用自动换行
+opt.wrap = true
 
 -- 搜索设置
 opt.hlsearch = true          -- 高亮搜索结果

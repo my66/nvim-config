@@ -30,10 +30,10 @@ vim.diagnostic.config({
 
 -- 3. 设置快捷键
 -- 使用 <Leader>d (通常是 \d 或 空格d) 打开当前行的浮动诊断窗口
-vim.keymap.set("n", "<Leader>d", function()
+vim.keymap.set("n", "<Leader>ds", function()
   vim.diagnostic.open_float(nil, { scope = "line" }) -- 'line' 范围仅显示当前行 [4, 1, 10, 3]
 end, { desc = "显示当前行诊断" })
-vim.keymap.set("n", "<Leader>D", function()
+vim.keymap.set("n", "<Leader>dl", function()
   vim.diagnostic.open_float(nil, { scope = "buffer" }) -- 'buffer' 范围显示整个文件 [4, 10]
 end, { desc = "显示缓冲区诊断" })
 
@@ -46,7 +46,6 @@ end, { desc = "显示缓冲区诊断" })
 --     },
 --   }
 -- })
--- [10, 11, 12, 13, 5]
 
 -- 5. (可选) 自定义诊断高亮颜色 (示例)
 -- vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#E06C75", bold = true }) -- 红色加粗
@@ -55,7 +54,5 @@ end, { desc = "显示缓冲区诊断" })
 -- vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = "#C678DD" }) -- 紫色
 -- -- 单独配置下划线样式 (默认不链接到基础高亮) [4, 7]
 -- vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#E06C75" })
--- vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = "#E5C07B" })
+-- vim.api.nvim_set_hl(0, "DiaDgnosticUnderlineWarn", { undercurl = true, sp = "#E5C07B" })
 
--- 提示信息
---print("诊断配置已加载。使用 <Leader>d 查看当前行诊断。")

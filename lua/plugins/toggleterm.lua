@@ -73,7 +73,7 @@ return {
       -- 在 Terminal 模式下，使用 <leader>t 也可以切换 (关闭) 终端
       -- 注意：这需要你的 <leader> 键不是终端本身会用到的字符
       -- 如果你的 leader 是逗号 ',', 这个映射通常是安全的
-      map('t', '<leader>t', '<cmd>ToggleTerm<CR>', { desc = "切换终端", silent = true })
+      map('t', '<leader>tt', '<cmd>ToggleTerm<CR>', { desc = "切换终端", silent = true })
     end
 
     -- 使用 Vim 的自动命令，在进入 Terminal 模式时调用我们的函数来设置内部快捷键
