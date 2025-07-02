@@ -16,6 +16,7 @@ return {
   { import = "plugins.toggleterm" },
   { import = "plugins.ui_enhancements" },
   { import = "plugins.autotag" },
+  { import = "plugins.markdown-preview" },
 
 
 }

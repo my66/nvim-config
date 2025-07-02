@@ -28,7 +28,7 @@ return {
           autocomplete = false
         },
         mapping = cmp.mapping.preset.insert({
-          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<C-k>"] = cmp.mapping.complete(),
           ["<CR>"]      = cmp.mapping.confirm({ select = false }),
           -- 使用 cmp 自身的行为插入并选择
           ["<C-n>"]     = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
