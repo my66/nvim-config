@@ -3,6 +3,8 @@ return {
     "williamboman/mason.nvim",
     dependencies = { "williamboman/mason-lspconfig.nvim" },
     config = function()
+      local servers = require("plugins.lsp.servers")
+
       require("mason").setup({
         ui = {
           icons = {
@@ -13,17 +15,7 @@ return {
         },
       })
       require("mason-lspconfig").setup({
-        ensure_installed = {
-          "clangd",        -- C/C++
-          "bashls",        -- Shell
-          "html",          -- HTML
-          "cssls",         -- CSS
-          "pyright",       -- Python
-          "ts_ls",         -- TypeScript/JavaScript
-          "lua_ls",        -- Lua
-          "rust_analyzer", -- Rust
-          "gopls",
-        },
+        ensure_installed = servers.ensure_installed,
       })
     end,
   },
