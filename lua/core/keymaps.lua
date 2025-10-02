@@ -46,6 +46,11 @@ map('n', '<C-k>', '<C-w>k', vim.tbl_extend("force", opts, { desc = "切换到上
 map("n", "]d", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "跳到下一个诊断/错误" }))
 map("n", "[d", vim.diagnostic.goto_prev, vim.tbl_extend("force", opts, { desc = "跳到上一个诊断/错误" }))
 
+-- [[ 注释相关 (vim-commentary) ]]
+local commentary_opts = { noremap = false, silent = true }
+map("n", "<leader>/", "<Plug>CommentaryLine", vim.tbl_extend("force", commentary_opts, { desc = "切换当前行注释" }))
+map("v", "<leader>/", "<Plug>Commentary", vim.tbl_extend("force", commentary_opts, { desc = "切换选区注释" }))
+
 -- 注意: 原 keymaps.lua 文件中的 <leader>tt 和 <leader>tv 已被注释掉，
 -- 因为 toggleterm.lua 中定义了功能更完善的终端切换快捷键。
 -- map("n", "<leader>tt", "<cmd>split term://bash<CR>", vim.tbl_extend("force", opts, { desc = "在下方打开终端" }))
