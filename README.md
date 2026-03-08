@@ -17,14 +17,14 @@
 |------|-------------|---------------|----------------|
 | Normal | `<Leader>nh` | `:nohl<CR>`   | 清除搜索高亮   |
 
-## 注释与代码隔离（vim-commentary）
+## 注释与代码隔离（Neovim 原生注释映射，0.10+）
 
 | 模式 | 快捷键        | 操作                          | 说明                         |
 |------|---------------|-------------------------------|------------------------------|
-| Normal | `<Leader>/`    | `<Plug>CommentaryLine`         | 切换当前行注释               |
-| Visual | `<Leader>/`    | `<Plug>Commentary`             | 切换选中区域注释             |
-| Normal/Visual | `gc{motion}` | vim-commentary 默认按键       | 依动作注释/取消注释对应范围 |
-| Normal | `gcc`          | vim-commentary 默认行注释快捷键 | 注释/恢复当前整行           |
+| Normal | `<Leader>/`    | `gcc`（通过 remap）            | 切换当前行注释（需 Neovim 0.10+） |
+| Visual | `<Leader>/`    | `gc`（通过 remap）             | 切换选中区域注释（需 Neovim 0.10+） |
+| Normal/Visual | `gc{motion}` | Neovim 原生注释操作符         | 依动作注释/取消注释对应范围 |
+| Normal | `gcc`          | Neovim 原生当前行注释快捷键    | 注释/恢复当前整行           |
 
 ## 窗口与标签页
 
