@@ -3,16 +3,12 @@ return {
     "neovim/nvim-lspconfig",
     -- 在读取缓冲区或新建文件时启动
     event        = { "BufReadPre", "BufNewFile" },
-    dependencies = { "folke/neodev.nvim" },
+    dependencies = { "folke/lazydev.nvim" },
     config = function()
       local servers = require("plugins.lsp.servers")
+      local lspconfig = require("lspconfig")
 
-      if not vim.lsp or not vim.lsp.config then
-        vim.notify("当前 Neovim 不支持 vim.lsp.config 接口", vim.log.levels.ERROR)
-        return
-      end
-
-      require("neodev").setup()
+      require("lazydev").setup()
 
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -35,15 +31,18 @@ return {
       })
 
       for _, name in ipairs(servers.ensure_installed) do
-        local base = vim.lsp.config[name]
-        if not base then
-          vim.notify(string.format("未找到 %s 的默认 LSP 配置", name), vim.log.levels.WARN)
-        end
-
         local overrides = servers.server_settings[name] or {}
-        local merged = vim.tbl_deep_extend("force", {}, base or {}, { capabilities = capabilities }, overrides)
+        local merged = vim.tbl_deep_extend("force", {}, { capabilities = capabilities }, overrides)
         merged.autostart = merged.autostart ~= false
-        vim.lsp.config[name] = merged
+
+        if vim.lsp and vim.lsp.config and vim.lsp.enable then
+          vim.lsp.config(name, merged)
+          vim.lsp.enable(name)
+        elseif lspconfig[name] then
+          lspconfig[name].setup(merged)
+        else
+          vim.notify(string.format("未找到 %s 的 LSP 配置", name), vim.log.levels.WARN)
+        end
       end
     end,
   },
