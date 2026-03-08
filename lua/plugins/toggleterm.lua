@@ -54,8 +54,6 @@ return {
 
     -- 定义切换终端的快捷键
     local map = vim.keymap.set
-    local term_opts = { silent = true }
-
     -- Normal 模式下的快捷键
     -- 使用 <leader>t 切换默认终端 (上面 direction 设置的 float)
     map("n", "<leader>tt", "<cmd>ToggleTerm<CR>", { desc = "切换浮动终端", silent = true })
@@ -64,19 +62,16 @@ return {
     -- 使用 <leader>vt 切换垂直分割终端
     map("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>", { desc = "切换垂直终端", silent = true })
 
-    -- 定义一个函数，用于在终端内部设置快捷键
-    function _G.set_terminal_keymaps()
-      -- 设置在 Terminal 模式下的快捷键
-      -- 使用 jj 退出 Terminal 模式回到 Normal 模式 (个人习惯，可选)
-      map('t', 'jj', '<C-\\><C-n>', term_opts)
-      map('t', '<esc>', '<C-\\><C-n>', term_opts)
-      -- 在 Terminal 模式下，使用 <leader>t 也可以切换 (关闭) 终端
-      -- 注意：这需要你的 <leader> 键不是终端本身会用到的字符
-      -- 如果你的 leader 是逗号 ',', 这个映射通常是安全的
-      map('t', '<leader>tt', '<cmd>ToggleTerm<CR>', { desc = "切换终端", silent = true })
-    end
+    vim.api.nvim_create_autocmd("TermOpen", {
+      pattern = "term://*",
+      callback = function(event)
+        local term_map_opts = { buffer = event.buf, silent = true }
 
-    -- 使用 Vim 的自动命令，在进入 Terminal 模式时调用我们的函数来设置内部快捷键
-    vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+        map("t", "jj", "<C-\\><C-n>", term_map_opts)
+        map("t", "<esc>", "<C-\\><C-n>", term_map_opts)
+        map("t", "<leader>tt", "<cmd>ToggleTerm<CR>",
+          vim.tbl_extend("force", term_map_opts, { desc = "切换终端" }))
+      end,
+    })
   end
 }

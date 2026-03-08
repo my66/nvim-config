@@ -12,7 +12,6 @@ return {
   { import = "plugins.telescope" },
   { import = "plugins.which-key" },
   { import = "plugins.treesitter" },
-  { import = "plugins.commentary" },
   { import = "plugins.toggleterm" },
   { import = "plugins.ui_enhancements" },
   { import = "plugins.autotag" },
