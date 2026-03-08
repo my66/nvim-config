@@ -1,3 +1,6 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- 核心设置
 require("core.options")
 require("core.keymaps")
@@ -27,4 +30,3 @@ require("lazy").setup(plugin_specs, {
 
 -- diagnostics.lua 只是配置，不作为插件加载，单独 require
 require("plugins.lsp.diagnostics")
-
