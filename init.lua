@@ -4,8 +4,9 @@ require("core.keymaps")
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local uv = vim.uv or vim.loop
 -- lua print(vim.fn.stdpath("data")) 查看目录位置
-if not vim.loop.fs_stat(lazypath) then
+if not uv.fs_stat(lazypath) then
   print("Installing lazy.nvim...")
   vim.fn.system({
     "git",
@@ -27,4 +28,3 @@ require("lazy").setup(plugin_specs, {
 
 -- diagnostics.lua 只是配置，不作为插件加载，单独 require
 require("plugins.lsp.diagnostics")
-
