@@ -101,7 +101,13 @@ endif
 if empty(glob(s:plug_vim))
   if executable('curl')
     silent execute '!curl -fLo ' . shellescape(s:plug_vim) . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    autocmd VimEnter * ++once PlugInstall --sync | source $MYVIMRC
+    if filereadable(s:plug_vim)
+      autocmd VimEnter * ++once PlugInstall --sync | source $MYVIMRC
+    else
+      echohl WarningMsg
+      echom 'vim-plug bootstrap failed. Please install plug.vim manually.'
+      echohl None
+    endif
   else
     echohl WarningMsg
     echom 'vim-plug not found and curl is unavailable. Please install plug.vim manually.'
@@ -109,35 +115,37 @@ if empty(glob(s:plug_vim))
   endif
 endif
 
-call plug#begin(s:plug_home)
+if filereadable(s:plug_vim)
+  call plug#begin(s:plug_home)
 
 " File explorer
-Plug 'preservim/nerdtree'
+  Plug 'preservim/nerdtree'
 
 " Fuzzy finder (requires ripgrep for :Rg)
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 
 " Status line
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 
 " Git change signs
-Plug 'airblade/vim-gitgutter'
+  Plug 'airblade/vim-gitgutter'
 
 " Auto pairs
-Plug 'jiangmiao/auto-pairs'
+  Plug 'jiangmiao/auto-pairs'
 
 " Better commenting
-Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-commentary'
 
 " Surround text objects
-Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-surround'
 
 " Syntax collection
-Plug 'sheerun/vim-polyglot'
+  Plug 'sheerun/vim-polyglot'
 
-call plug#end()
+  call plug#end()
+endif
 
 " ------------------------------
 " Plugin options
